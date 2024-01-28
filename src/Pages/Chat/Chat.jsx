@@ -65,12 +65,12 @@ export default function Dashboard() {
          .then((res) => {
             const userdata = res.data;
             setCurrUser(userdata);
-            // console.log(userdata.tries);
+            console.log(userdata.tries);
+            setUserTries(userdata.tries);
             if (userdata.apikey == null || userdata.subdomain == null) {
                modalstate.open();
                setZenCreds(false);
             } else {
-               setUserTries(userdata.tries);
                setZenCreds(true);
             }
          })
