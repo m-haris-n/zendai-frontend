@@ -101,7 +101,8 @@ export default function Auth(props) {
             })
             .catch((err) => {
                // console.log(err);
-               setError(true);
+               setError(err.response.data.detail);
+
                setLoading(false);
             });
       } else {
@@ -120,7 +121,8 @@ export default function Auth(props) {
                nav("/auth", { state: { auth_type: "login" } });
             })
             .catch((err) => {
-               setError(true);
+               console.log(err.response.data.detail);
+               setError(err.response.data.detail);
                setLoading(false);
                // console.log(err);
             });
@@ -229,7 +231,7 @@ export default function Auth(props) {
                   color={"red"}
                   radius={"md"}
                >
-                  Something went wrong. Try again or contact support.
+                  {error}
                </Alert>
             )}
          </Paper>
