@@ -7,8 +7,13 @@ export default function ChatRedirector() {
 
    useEffect(() => {
       privIns.get("/chats/").then((res) => {
+         if (res.data.length == 0) {
+            privIns.post("/chats").then((res) => {
+               nav(`/chat/${res.data.id}`);
+            });
+         }
          nav(`/chat/${res.data[0].id}`);
       });
-   });
+   }, []);
    return <div></div>;
 }
