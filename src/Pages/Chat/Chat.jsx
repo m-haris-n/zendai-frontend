@@ -85,9 +85,7 @@ export default function Dashboard() {
          .then((res) => {
             // console.log(res);
          })
-         .catch((err) => {
-            // console.log(err);
-         });
+         .catch((err) => {});
    };
 
    const chats = useQuery("chat", () => {
