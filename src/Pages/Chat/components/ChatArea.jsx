@@ -52,7 +52,7 @@ export default function ChatArea({ openCredsModal, chatid }) {
 
    useEffect(() => {
       scrollToBottom();
-   }, []);
+   }, [msgHistory]);
 
    // INIT HANDLERS
 
@@ -68,6 +68,10 @@ export default function ChatArea({ openCredsModal, chatid }) {
       scrollToBottom();
    }, [chatid]);
 
+   useEffect(() => {
+      console.log("Effect", msgHistory);
+   }, [msgHistory, queryClient.invalidateQueries]);
+
    //Queries
 
    const sendMessage = (vals) => {
@@ -81,40 +85,38 @@ export default function ChatArea({ openCredsModal, chatid }) {
          id = msgHistory[msgHistory.length - 1].id + 1;
       }
 
-      const msgObj = { message_text: vals.message, id: id, role: "user" };
+      let msgObj = { message_text: vals.message, id: id, role: "user" };
+      console.log("msgobjarr:", [...msgHistory, msgObj]);
 
       setMsgHistory((msgHistory) => [...msgHistory, msgObj]);
 
       privIns
          .post(`/chats/${chatid}/messages`, vals)
          .then((res) => {
-            // console.log(res.data);
+            console.log(res.data.response);
             setMsgHistory((msgHistory) => [...msgHistory, res.data.response]);
-            scrollToBottom();
             setWaiting(false);
          })
          .catch((err) => {
             setWaiting(false);
             setError(true);
          });
-      scrollToBottom();
    };
 
-   const msgs = useQuery("msgs", () => {
-      privIns
-         .get(`/chats/${chatid}`)
-         .then((res) => {
-            setMsgHistory(res.data.messages);
-         })
-         .catch((err) => {
-            // console.log(err);
-         });
-      scrollToBottom();
-   });
+   // const msgs = useQuery("msgs", () => {
+   //    privIns
+   //       .get(`/chats/${chatid}`)
+   //       .then((res) => {
+   //          setMsgHistory(res.data.messages);
+   //       })
+   //       .catch((err) => {
+   //          // console.log(err);
+   //       });
+   // });
 
    const msgMutation = useMutation(sendMessage, {
       onSuccess: () => {
-         queryClient.invalidateQueries("msgs");
+         // queryClient.invalidateQueries("msgs");
          queryClient.invalidateQueries("curr_user");
       },
    });
@@ -123,6 +125,7 @@ export default function ChatArea({ openCredsModal, chatid }) {
 
    // console.log(history);
    const chat = msgHistory.map((msg) => {
+      // console.log("hist:", msgHistory);
       return (
          <Box
             key={msg.id}

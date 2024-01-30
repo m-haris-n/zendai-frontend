@@ -3,9 +3,12 @@ import { useForm } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks";
 import React, { useEffect, useState } from "react";
 import { privIns } from "../../../api/instances";
+import { useNavigate } from "react-router-dom";
 
 export default function AddCredentials({ modalOpened, modalstate }) {
    //STATES
+
+   const nav = useNavigate();
 
    const [addCredLoad, setAddCredLoad] = useState(false);
    const [addCredErr, setAddCredErr] = useState(false);
@@ -32,6 +35,7 @@ export default function AddCredentials({ modalOpened, modalstate }) {
          .then((res) => {
             // console.log(res);
             setAddCredLoad(false);
+            nav(0);
          })
          .catch((err) => {
             // console.log(err);
