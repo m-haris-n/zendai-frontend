@@ -3,6 +3,7 @@ import {
    Box,
    Button,
    Flex,
+   Loader,
    NavLink,
    Paper,
    ScrollArea,
@@ -11,8 +12,14 @@ import {
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function ChatHistory({ history, createChat, activeid }) {
+export default function ChatHistory({
+   history,
+   createChat,
+   activeid,
+   loading,
+}) {
    const nav = useNavigate();
+   console.log("loading", loading);
 
    const navlinks = history.map((chat) => (
       <NavLink
@@ -44,7 +51,14 @@ export default function ChatHistory({ history, createChat, activeid }) {
                   createChat();
                }}
             >
-               Create new chat
+               {loading == true ? (
+                  <Loader
+                     size={"sm"}
+                     color={"white"}
+                  />
+               ) : (
+                  "Create new chat"
+               )}
             </Button>
 
             {navlinks}

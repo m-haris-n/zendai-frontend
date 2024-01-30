@@ -162,6 +162,7 @@ export default function Dashboard() {
                   history={chatHist}
                   createChat={chatMutation.mutate}
                   activeid={chatid}
+                  loading={chatMutation.isLoading}
                />
             </AppShell.Navbar>
             <AppShell.Main>

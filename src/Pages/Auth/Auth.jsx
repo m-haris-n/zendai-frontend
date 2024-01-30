@@ -45,11 +45,11 @@ export default function Auth(props) {
                   : "Invalid email"
                : null,
          password: (val) =>
-            val.length <= 6
+            val.length < 6
                ? "Password should include at least 6 characters"
                : null,
          username: (val) =>
-            val.length <= 6
+            val.length < 6
                ? "Password should include at least 6 characters"
                : null,
          terms: (val) => (val ? null : "Must agree to terms and conditions."),
@@ -118,7 +118,8 @@ export default function Auth(props) {
             .then((res) => {
                setLoading(false);
                // console.log(res);
-               nav("/auth", { state: { auth_type: "login" } });
+               setType(() => "login");
+               nav(0);
             })
             .catch((err) => {
                console.log(err.response.data.detail);
