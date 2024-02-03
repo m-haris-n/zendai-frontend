@@ -119,7 +119,7 @@ export default function Auth(props) {
                setLoading(false);
                // console.log(res);
                // setType(() => "login");
-               nav(0);
+               nav("/auth", { state: { auth_type: "login" } });
             })
             .catch((err) => {
                console.log(err.response.data.detail);
