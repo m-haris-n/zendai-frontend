@@ -30,6 +30,7 @@ export default function AddCredentials({ modalOpened, modalstate }) {
    const addCredsToUser = (vals) => {
       setAddCredErr(false);
       setAddCredLoad(true);
+      console.log(vals);
       privIns
          .patch("/users/me", vals)
          .then((res) => {

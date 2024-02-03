@@ -118,7 +118,7 @@ export default function Auth(props) {
             .then((res) => {
                setLoading(false);
                // console.log(res);
-               setType(() => "login");
+               // setType(() => "login");
                nav(0);
             })
             .catch((err) => {
@@ -189,7 +189,7 @@ export default function Auth(props) {
                      <Checkbox
                         size={"lg"}
                         label="I accept terms and conditions"
-                        {...form.getInputProps("terms")}
+                        {...form.getInputProps("terms", { type: "checkbox" })}
                      />
                   )}
                </Stack>
