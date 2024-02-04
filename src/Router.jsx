@@ -6,6 +6,8 @@ import "./index.css";
 import "@mantine/core/styles.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import ChatRedirector from "./Pages/Chat/ChatRedirector";
+import Login from "./Pages/Auth/Login";
+import Register from "./Pages/Auth/Register";
 
 const queryClient = new QueryClient();
 
@@ -23,8 +25,12 @@ const router = createBrowserRouter([
       element: <Chat />,
    },
    {
-      path: "/auth",
-      element: <Auth />,
+      path: "/login",
+      element: <Login />,
+   },
+   {
+      path: "/register",
+      element: <Register />,
    },
 ]);
 

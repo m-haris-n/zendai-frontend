@@ -65,18 +65,14 @@ export default function Home() {
             <div className={classes.controls}>
                <Button
                   size={"lg"}
-                  onClick={() =>
-                     nav("/auth", { state: { auth_type: "register" } })
-                  }
+                  onClick={() => nav("/register")}
                >
                   Register
                </Button>
                <Button
                   size={"lg"}
                   variant={"white"}
-                  onClick={() =>
-                     nav("/auth", { state: { auth_type: "login" } })
-                  }
+                  onClick={() => nav("/login")}
                >
                   Login
                </Button>
