@@ -83,6 +83,7 @@ export default function Dashboard() {
       privIns
          .post("/chats/")
          .then((res) => {
+            nav(0);
             // console.log(res);
          })
          .catch((err) => {});
