@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Chat from "./Pages/Chat/Chat";
-import Auth from "./Pages/Auth/Auth";
 import "./index.css";
 import "@mantine/core/styles.css";
 import { QueryClient, QueryClientProvider } from "react-query";

@@ -53,7 +53,7 @@ export default function Dashboard() {
       const uid = localStorage.getItem("userid");
 
       if (uid == null) {
-         nav("/auth");
+         nav("/login");
       }
    }, []);
 

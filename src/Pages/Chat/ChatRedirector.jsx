@@ -21,7 +21,7 @@ export default function ChatRedirector() {
          .catch((err) => {
             console.log(err);
             // localStorage.clear();
-            nav("/auth");
+            nav("/login");
          });
    }, []);
    return <div></div>;

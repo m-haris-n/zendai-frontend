@@ -15,7 +15,7 @@ export default function UserMenu({ openModal }) {
 
    const logoutHandler = () => {
       localStorage.clear();
-      nav("/auth");
+      nav("/login");
    };
 
    return (
