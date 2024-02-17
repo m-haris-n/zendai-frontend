@@ -135,11 +135,11 @@ export default function Dashboard() {
                      <Text
                         variant="gradient"
                         size={"30px"}
-                        lh={1}
+                        p={4}
                         fw={700}
                         gradient={{ from: "purple", to: "blue" }}
                      >
-                        ZendAI
+                        Supportive
                      </Text>
                   </Group>
                   <Flex
