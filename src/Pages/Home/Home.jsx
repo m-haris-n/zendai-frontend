@@ -37,15 +37,16 @@ export default function Home() {
 
          <div className={classes.inner}>
             <Title className={classes.title}>
-               Automated AI{" "}
+               Ask, Analyze, Achieve with{" "}
                <Text
-                  component="span"
-                  className={classes.highlight}
+                  span
                   inherit
+                  variant="gradient"
+                  gradient={{ from: "purple", to: "blue" }}
+                  fw={700}
                >
-                  emails
-               </Text>{" "}
-               for your products and services.
+                  Supportive
+               </Text>
             </Title>
 
             <Container
@@ -57,8 +58,8 @@ export default function Home() {
                   c="dimmed"
                   className={classes.description}
                >
-                  Provide information about your business and generate cold
-                  emails with just one click!
+                  Stop wrangling with Zendesk Explore to get basic data, just
+                  type what you need and let Supportive do the work.
                </Text>
             </Container>
 
